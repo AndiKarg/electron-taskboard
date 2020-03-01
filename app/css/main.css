@@ -1,0 +1,77 @@
+@font-face {
+  font-family: "Monti";
+  src: url("C:/Users/Andi/Documents/WEBPROJECTS/ELECTRON/MyTaskboard/app/font/Montserrat-Regular.ttf");
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #e0e5ec;
+  overflow: hidden;
+  min-width: 200px;
+  min-height: 200px;
+  font-family: "Monti", serif;
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.tasklist {
+  background-color: #e0e5ec;
+  box-shadow: 9px 9px 16px rgb(163, 177, 198, 0.6),
+    -9px -9px 16px rgba(255, 255, 255, 0.5);
+  height: 80%;
+  width: 30%;
+  border-radius: 10px;
+}
+
+.tasklist .tasktitle {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: solid 1px grey;
+}
+
+.tasklist .taskbody {
+  padding-top: 5%;
+  height: 75%;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.tasklist .taskbody .taskitem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e0e5ec;
+  box-shadow: 9px 9px 16px rgb(163, 177, 198, 0.6),
+    -9px -9px 16px rgba(255, 255, 255, 0.5);
+  padding: 0.5rem;
+  width: 60%;
+  border-radius: 10px;
+  height: max-content;
+}
+
+.tasklist .taskbody .taskitem:hover {
+  cursor: pointer;
+}
+
+.tasklist .taskfoot {
+  height: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: solid 1px grey;
+}
