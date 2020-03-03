@@ -11,34 +11,40 @@
     <title>Hello World!</title>
   </head>
   <body>
-    <div class="container">
-      <div class="tasklist">
-        <div class="tasktitle">
-          ToDo
-        </div>
-        <div class="taskbody">
-          <!--Wird droppable-->
-        </div>
-        <div class="taskfoot">
-          footer
-        </div>
+    <div class="main">
+      <div class="newtask">
+        <input id="taskcreate" type="text" />
+        <button class="mybtn">Task erstellen</button>
       </div>
-      <div class="tasklist">
-        <div class="tasktitle">
-          In Progress
+      <div class="container">
+        <div id="todo" class="tasklist">
+          <div class="tasktitle">
+            ToDo
+          </div>
+          <div class="taskbody">
+            <!--Wird droppable-->
+          </div>
+          <div class="taskfoot">
+            footer
+          </div>
         </div>
-        <div class="taskbody"></div>
-        <div class="taskfoot">
-          footer
+        <div id="inprogress" class="tasklist">
+          <div class="tasktitle">
+            In Progress
+          </div>
+          <div class="taskbody"></div>
+          <div class="taskfoot">
+            footer
+          </div>
         </div>
-      </div>
-      <div class="tasklist">
-        <div class="tasktitle">
-          Done
-        </div>
-        <div class="taskbody"></div>
-        <div class="taskfoot">
-          footer
+        <div id="done" class="tasklist">
+          <div class="tasktitle">
+            Done
+          </div>
+          <div class="taskbody"></div>
+          <div class="taskfoot">
+            footer
+          </div>
         </div>
       </div>
     </div>
