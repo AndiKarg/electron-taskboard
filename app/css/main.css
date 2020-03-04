@@ -1,118 +1,137 @@
 @font-face {
-    font-family: "Monti";
-    src: url("../font/Montserrat-Regular.ttf");
+  font-family: "Monti";
+  src: url("../font/Montserrat-Regular.ttf");
 }
 
 html,
 body {
-    height: 100%;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    background-color: #e0e5ec;
-    overflow: hidden;
-    font-family: "Monti", serif;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #e0e5ec;
+  overflow: hidden;
+  font-family: "Monti", serif;
 }
 
 .main {
-    height: 100%;
-    width: 100%;
+  height: 100%;
+  width: 100%;
 }
 
 .newtask {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 15%;
-    width: 100%;
-    border-bottom: solid 1px black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 15%;
+  width: 100%;
 }
 
 .newtask input {
-    border: none;
-    background-color: #e0e5ec;
-    box-shadow: 9px 9px 16px rgb(163, 177, 198, 0.6), -9px -9px 16px rgba(255, 255, 255, 0.5);
-    padding: 1rem;
+  border: none;
+  background-color: #e0e5ec;
+  box-shadow: 9px 9px 16px rgb(163, 177, 198, 0.6),
+    -9px -9px 16px rgba(255, 255, 255, 0.5);
+  padding: 1rem;
+  margin-right: 2rem;
 }
 
-.newtask .mybtn {
-    border-radius: 20px;
-    outline: none;
-    border: none;
-    background-color: #e0e5ec;
-    box-shadow: 9px 9px 16px rgb(163, 177, 198, 0.6), -9px -9px 16px rgba(255, 255, 255, 0.5);
-    padding: 1rem;
-    margin-left: 2rem;
+.mybtn {
+  border-radius: 20px;
+  outline: none;
+  border: none;
+  background-color: #e0e5ec;
+  box-shadow: 9px 9px 16px rgb(163, 177, 198, 0.6),
+    -9px -9px 16px rgba(255, 255, 255, 0.5);
+  padding: 1rem;
 }
 
 .container {
-    height: 85%;
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+  height: 70%;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .tasklist {
-    background-color: #e0e5ec;
-    padding: 1rem;
-    box-shadow: 9px 9px 16px rgb(163, 177, 198, 0.6), -9px -9px 16px rgba(255, 255, 255, 0.5);
-    height: 75%;
-    width: 27.5%;
-    border-radius: 10px;
+  background-color: #e0e5ec;
+  padding: 1%;
+  box-shadow: 9px 9px 16px rgb(163, 177, 198, 0.6),
+    -9px -9px 16px rgba(255, 255, 255, 0.5);
+  height: 96%;
+  width: 25%;
+  border-radius: 10px;
 }
 
 .tasklist .tasktitle {
-    width: 100%;
-    height: 10%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-bottom: solid 1px grey;
+  width: 100%;
+  height: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .tasklist .taskbody {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    height: 75%;
-    width: 100%;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  height: 80%;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
 }
 
 .tasklist .taskbody .taskitems {
-    width: 100%;
-    height: max-content;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    justify-content: center;
-    min-height: max-content;
+  width: 100%;
+  height: max-content;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: max-content;
 }
 
 .tasklist .taskbody .taskitems .taskitem {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #e0e5ec;
-    box-shadow: 9px 9px 16px rgb(163, 177, 198, 0.6), -9px -9px 16px rgba(255, 255, 255, 0.5);
-    padding: 1rem;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-    width: 75%;
-    border-radius: 10px;
-    height: max-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e0e5ec;
+  box-shadow: 9px 9px 16px rgb(163, 177, 198, 0.6),
+    -9px -9px 16px rgba(255, 255, 255, 0.5);
+  padding: 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  width: 75%;
+  border-radius: 10px;
+  height: max-content;
 }
 
 .tasklist .taskbody .taskitem:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
-.tasklist .taskfoot {
-    height: 10%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-top: solid 1px grey;
+#todo .taskitem {
+  background: url(../img/reddot.png) 0% 50%;
+  background-repeat: no-repeat;
+  background-size: 50px;
+}
+
+#inprogress .taskitem {
+  background: url(../img/orangedot.png) 0% 50%;
+  background-repeat: no-repeat;
+  background-size: 40px;
+}
+
+#done .taskitem {
+  background: url(../img/greendot.png) 0% 50%;
+  background-repeat: no-repeat;
+  background-size: 40px;
+}
+
+.footer {
+  height: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

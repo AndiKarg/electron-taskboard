@@ -4,35 +4,26 @@ const path = require("path");
 
 // Enable live reload for Electron too
 require("electron-reload")(__dirname, {
-    electron: require(`${__dirname}/node_modules/electron`)
+  electron: require(`${__dirname}/node_modules/electron`)
 });
 
-let mainWindow = null;
-let devtools = null;
-
 function createWindow() {
-    // Create the browser window.
-    const mainWindow = new BrowserWindow({
-        width: 1200,
-        height: 900,
-        webPreferences: {
-            nodeIntegration: true
-        }
-    });
+  // Create the browser window.
+  const mainWindow = new BrowserWindow({
+    width: 1200,
+    height: 900,
+    webPreferences: {
+      nodeIntegration: true
+    }
+  });
 
-    devtools = new BrowserWindow();
+  mainWindow.setMenu(null);
 
-    mainWindow.setMenu(null);
+  // and load the index.html of the app.
+  mainWindow.loadFile("./app/index.html");
 
-    // and load the index.html of the app.
-    mainWindow.loadFile("./app/index.html");
-
-    console.log("alles geladen!");
-
-    // Open the DevTools.
-    //mainWindow.webContents.openDevTools(); //für Debugging!
-    mainWindow.webContents.setDevToolsWebContents(devtools.webContents);
-    mainWindow.webContents.openDevTools({ mode: "detach" });
+  // Open the DevTools.
+  mainWindow.webContents.openDevTools(); //für Debugging!
 }
 
 // This method will be called when Electron has finished
@@ -42,15 +33,15 @@ app.on("ready", createWindow);
 
 // Quit when all windows are closed.
 app.on("window-all-closed", function() {
-    // On macOS it is common for applications and their menu bar
-    // to stay active until the user quits explicitly with Cmd + Q
-    if (process.platform !== "darwin") app.quit();
+  // On macOS it is common for applications and their menu bar
+  // to stay active until the user quits explicitly with Cmd + Q
+  if (process.platform !== "darwin") app.quit();
 });
 
 app.on("activate", function() {
-    // On macOS it's common to re-create a window in the app when the
-    // dock icon is clicked and there are no other windows open.
-    if (BrowserWindow.getAllWindows().length === 0) createWindow();
+  // On macOS it's common to re-create a window in the app when the
+  // dock icon is clicked and there are no other windows open.
+  if (BrowserWindow.getAllWindows().length === 0) createWindow();
 });
 
 // In this file you can include the rest of your app's specific main process

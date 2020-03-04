@@ -1,69 +1,55 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
     <script>
-        window.$ = window.jQuery = require("jquery");
+      window.$ = window.jQuery = require("jquery");
     </script>
     <script src="js/jquery-ui.min.js"></script>
     <link rel="stylesheet" href="css/main.css" />
     <title>Hello World!</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="main">
-        <div class="newtask">
-            <input id="taskcreate" type="text" />
-            <button class="mybtn">Task erstellen</button>
+      <div class="newtask">
+        <input id="taskcreate" type="text" />
+        <button id="savetask" class="mybtn">Task erstellen</button>
+      </div>
+      <div class="container">
+        <div class="tasklist">
+          <div class="tasktitle">
+            ToDo
+          </div>
+          <div id="todo" class="taskbody">
+            <div class="taskitems"></div>
+          </div>
         </div>
-        <div class="container">
-            <div class="tasklist">
-                <div class="tasktitle">
-                    ToDo
-                </div>
-                <div id="todo" class="taskbody">
-                    <div class="taskitems">
-
-                    </div>
-                </div>
-                <div class="taskfoot">
-                    footer
-                </div>
-            </div>
-            <div class="tasklist">
-                <div class="tasktitle">
-                    In Progress
-                </div>
-                <div id="inprogress" class="taskbody">
-                    <div class="taskitems">
-
-                    </div>
-                </div>
-                <div class="taskfoot">
-                    footer
-                </div>
-            </div>
-            <div class="tasklist">
-                <div class="tasktitle">
-                    Done
-                </div>
-                <div id="done" class="taskbody">
-                    <div class="taskitems">
-
-                    </div>
-                </div>
-                <div class="taskfoot">
-                    footer
-                </div>
-            </div>
+        <div class="tasklist">
+          <div class="tasktitle">
+            In Progress
+          </div>
+          <div id="inprogress" class="taskbody">
+            <div class="taskitems"></div>
+          </div>
         </div>
+        <div class="tasklist">
+          <div class="tasktitle">
+            Done
+          </div>
+          <div id="done" class="taskbody">
+            <div class="taskitems"></div>
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+        <button class="mybtn" id="savebtn">Speichern</button>
+      </div>
     </div>
 
     <!-- You can also require other files to run in this process -->
     <script src="./renderer.js"></script>
     <script src="js/script.js"></script>
-</body>
-
+  </body>
 </html>

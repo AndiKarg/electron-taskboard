@@ -4,68 +4,88 @@ const dbcontent = fs.readFileSync(dbname);
 let content = JSON.parse(dbcontent);
 
 $(document).ready(function() {
-    readDB();
-    main();
-    $(".mybtn").click(handleTaskCreate);
+  readDB();
+  main();
+  $("#savetask").click(handleTaskCreate);
+  $("#savebtn").click(insertIntoDB);
 });
 
 function readDB() {
-    console.log(content);
-    content.forEach((o, i) => {
-        console.log(o, i);
-        for (let key in o) {
-            console.log(key, o[key]);
-        }
-        $(".taskitem").draggable({
-            start: function() {
-                console.log("du dragst gerade: ", $(this).text());
-            },
-            revert: true
-        });
+  content.forEach((o, i) => {
+    for (let key in o) {
+      o[key].forEach(t => {
+        $("#" + key + " .taskitems").append(
+          "<div class='taskitem " + key + "'>" + t + "</div>"
+        );
+      });
+    }
+    $(".taskitem").draggable({
+      revert: true
     });
+  });
 }
 
 function main() {
-    $("#inprogress , #done").droppable({
-        drop: function(event, ui) {
-            let elem = ui.draggable[0];
-            let dropid = $(this).attr("id");
-            console.log(dropid);
-            $("#" + dropid + " .taskitems").append(
-                "<div class='taskitem'>" + $(elem).text() + "</div>"
-            );
-            $(elem).remove();
-            insertIntoDB(dropid, $(elem).text());
-        }
-    });
+  $(".taskbody").droppable({
+    drop: function(event, ui) {
+      let elem = ui.draggable[0];
+      let dropid = $(this).attr("id");
+      $("#" + dropid + " .taskitems").append(
+        "<div class='taskitem " + dropid + "'>" + $(elem).text() + "</div>"
+      );
+      $(".taskitem").draggable({
+        revert: true
+      });
+      $(elem).remove();
+      updateTasks(dropid, elem);
+    }
+  });
 }
 
 function handleTaskCreate() {
-    console.log("click!");
-    let input = $("#taskcreate").val();
-    if (input) {
-        $("#todo .taskitems").append("<div class='taskitem'>" + input + "</div>");
-        $(".taskitem").draggable({
-            start: function() {
-                console.log("du dragst gerade: ", $(this).text());
-            },
-            revert: true
-        });
-        $("#taskcreate").val("");
-    }
+  let input = $("#taskcreate").val();
+  if (input) {
+    $("#todo .taskitems").append(
+      "<div class='taskitem todo'>" + input + "</div>"
+    );
+    content[0].todo.push(input);
+    $(".taskitem").draggable({
+      revert: true
+    });
+    $("#taskcreate").val("");
+  }
 }
 
-function insertIntoDB(target, text) {
-    content.todo = content.todo.filter(c => {
-        return c !== text;
-    });
-    console.log(content.todo);
-    target == "inprogress" ?
-        content.inprogress.push(text) :
-        content.done.push(text);
-    fs.writeFile(dbname, JSON.stringify(content), function writeJSON(err) {
-        if (err) return console.log(err);
-        console.log(JSON.stringify(content));
-        console.log("writing to " + dbname);
-    });
+function updateTasks(target, elem) {
+  //remove from old list
+  let text = $(elem).text();
+  let source = $(elem)
+    .attr("class")
+    .split(" ")[1];
+  let targetindex = 0; //standard = todo
+  if (target == "inprogress") {
+    targetindex = 1;
+  } else if (target == "done") {
+    targetindex = 2;
+  }
+  let sourceindex = 0; //standard = todo
+  if (source == "inprogress") {
+    sourceindex = 1;
+  } else if (source == "done") {
+    sourceindex = 2;
+  }
+  //source array updaten
+  content[sourceindex][source] = content[sourceindex][source].filter(c => {
+    return c !== text;
+  });
+  //push into new list
+  content[targetindex][target].push(text);
+}
+
+function insertIntoDB() {
+  fs.writeFile(dbname, JSON.stringify(content), function writeJSON(err) {
+    if (err) return console.log(err);
+    console.log(JSON.stringify(content));
+    console.log("writing to " + dbname);
+  });
 }

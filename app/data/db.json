@@ -1,5 +1,1 @@
-[
-    { "todo": ["Text 6", "Text 7"] },
-    { "inprogress": ["Text 3", "Text 4", "Text 5"] },
-    { "done": ["Text 1", "Text 2"] }
-]
+[{"todo":["Text 1","Text 4","Text 5"]},{"inprogress":["Text 6","Text 2"]},{"done":["Text 3","erstellt"]}]
